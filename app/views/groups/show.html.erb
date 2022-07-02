@@ -24,6 +24,11 @@
             <td><%= @group.name %></td>
             <td><%= @group.introduction %></td>
             <td>
+              <% @group.users.each do |member| %>
+                <%= member.name %><br>
+              <% end %>
+            </td>
+            <td>
               <% if @group.owner_id == current_user.id %>
                 <%= link_to 'Edit', edit_group_path(@group), class: "btn btn-sm btn-success" %>
               <% elsif @group.users.include?(current_user) %>
